@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.functions.consultorio.modelos.CuentaModelo;
 import com.functions.consultorio.modelos.UsuarioModelo;
 import com.functions.consultorio.repositorios.UsuarioRepository;
 
@@ -14,7 +15,7 @@ public class UsuarioServicio {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public ArrayList<UsuarioModelo> getUsuarios(Long id){
+    public ArrayList<UsuarioModelo> getUsuarios(){
         return (ArrayList<UsuarioModelo>) usuarioRepository.findAll();
     }
 
@@ -22,7 +23,8 @@ public class UsuarioServicio {
         return usuarioRepository.findById(id);
     }
 
-    public UsuarioModelo crearUsuario(UsuarioModelo usuario){
+    public UsuarioModelo crearUsuario(UsuarioModelo usuario, CuentaModelo id){
+        usuario.setIdCuenta(id);
         return usuarioRepository.save(usuario);
     }
 
@@ -35,7 +37,7 @@ public class UsuarioServicio {
         return usuarioAuxiliar;
     }
 
-    public Boolean eliminarCuenta(Long id){
+    public Boolean eliminarUsuario(Long id){
         try {
             UsuarioModelo usuarioAuxiliar = usuarioRepository.findById(id).get();
             usuarioAuxiliar.setEliminadoUsuario(1);
