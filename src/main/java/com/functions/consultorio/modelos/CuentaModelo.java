@@ -31,7 +31,7 @@ public class CuentaModelo {
     private String fechaNacimiento;
 
     @Column(name = "eliminado_cuenta")
-    private String eliminadoCuenta;
+    private int eliminadoCuenta;
 
     public Long getIdCuenta() {
         return idCuenta;
@@ -77,11 +77,11 @@ public class CuentaModelo {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getEliminadoCuenta() {
+    public int getEliminadoCuenta() {
         return eliminadoCuenta;
     }
 
-    public void setEliminadoCuenta(String eliminadoCuenta) {
+    public void setEliminadoCuenta(int eliminadoCuenta) {
         this.eliminadoCuenta = eliminadoCuenta;
     }
 }
